@@ -18,7 +18,7 @@ export default async function TrainingSection() {
           Training
         </span>
       </div>
-      <h2 className="mt-4 text-2xl md:text-3xl font-semibold">
+      <h2 className="mt-4 text-xl md:text-3xl font-semibold px-4">
         Ikuti Pelatihan Mendatang di HMI Cabang Garut
       </h2>
 

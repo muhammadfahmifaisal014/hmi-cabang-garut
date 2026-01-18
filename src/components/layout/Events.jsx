@@ -19,7 +19,7 @@ export default async function EventsSection() {
         </span>
       </div>
 
-      <h2 className="text-2xl md:text-3xl font-semibold mb-8">
+      <h2 className="text-xl md:text-3xl font-semibold mb-8 px-4">
         Ikuti Kegiatan HMI Cabang Garut Mendatang
       </h2>
 

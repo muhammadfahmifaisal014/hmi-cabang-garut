@@ -22,7 +22,7 @@ export default function Home() {
             OFFICIAL WEBSITE
           </span>
 
-          <h1 className="mt-4 text-3xl md:text-5xl font-extrabold leading-snug">
+          <h1 className="mt-4 text-2xl md:text-5xl font-extrabold leading-tight md:leading-snug">
             HIMPUNAN MAHASISWA ISLAM <br /> CABANG GARUT
           </h1>
 
