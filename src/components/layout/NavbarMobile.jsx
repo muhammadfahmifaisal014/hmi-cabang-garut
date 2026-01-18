@@ -1,9 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Button from "../element/Button";
+import { Menu, X, ChevronDown } from "lucide-react";
 
+// Menu Data
 const menuList = [
   { name: "BERANDA", href: "/" },
   {
@@ -12,9 +13,9 @@ const menuList = [
     subMenu: [
       { name: "HMI Cabang Garut", href: "/profil" },
       { name: "HMI Visioner", href: "/profil/hmi-visioner" },
-      { name: "Struktur Pengurus Cabang", href: "/profil/struktur-pengurus" },
-      { name: "Lembaga Pengembangan Profesi (LPP)", href: "/profil/lpp" },
-      { name: "Daftar Ketua Umum HMI Cabang Garut", href: "/profil/ketua-umum" },
+      { name: "Struktur Pengurus", href: "/profil/struktur-pengurus" },
+      { name: "LPP", href: "/profil/lpp" },
+      { name: "Ketua Umum", href: "/profil/ketua-umum" },
     ],
   },
   {
@@ -24,97 +25,130 @@ const menuList = [
       { name: "Berita", href: "/info/berita" },
       { name: "Event", href: "/info/event" },
       { name: "Training", href: "/info/training" },
-    ]
+    ],
   },
   { name: "GALERI", href: "/galeri" },
   { name: "KONTAK", href: "/hubungi-kami" },
 ];
 
 export default function NavbarMobile({ className }) {
-  const [isOpen, setIsOpen] = useState(true); // true means hidden (translated up)
+  const [isOpen, setIsOpen] = useState(false);
   const [activeSubMenu, setActiveSubMenu] = useState(null);
 
-  const handleOpen = () => setIsOpen(!isOpen);
+  // Prevent scrolling when menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [isOpen]);
+
+  const toggleMenu = () => setIsOpen(!isOpen);
 
   const toggleSubMenu = (index) => {
-    if (activeSubMenu === index) {
-      setActiveSubMenu(null);
-    } else {
-      setActiveSubMenu(index);
-    }
+    setActiveSubMenu(activeSubMenu === index ? null : index);
   };
 
   return (
-    <nav
-      className={`relative flex items-center justify-around w-full text-xl text-white font-heading ${className}`}>
-      <Link href="/">
-        <Image
-          src="/img/logohmiputih.png"
-          alt="Logo HMI Putih"
-          width={45}
-          height={55}
-        />
+    <nav className={`w-full h-full flex items-center justify-between px-6 ${className}`}>
+
+      {/* Logo Area */}
+      <Link href="/" onClick={() => setIsOpen(false)} className="relative z-[1001]">
+        <div className="flex items-center gap-3">
+          <Image
+            src="/img/logohmiputih.png"
+            alt="Logo HMI"
+            width={40}
+            height={50}
+            className="object-contain"
+          />
+          <span className="font-bold text-white text-sm leading-tight tracking-wide">
+            HMI CABANG <br /> GARUT
+          </span>
+        </div>
       </Link>
-      <ul
-        className={`flex flex-col absolute -top-5 bg-gradient-to-b from-[#004521]/100 to-[#5a224e]/0 z-[-1] pt-32 w-full pb-[900px] gap-1 items-center justify-center transition-all ease-in-out duration-500 p-4 ${isOpen ? "-translate-y-full" : "translate-y-0"
-          }`}>
-        {menuList.map((item, index) => (
-          <li
-            key={index}
-            className={`w-full mb-1 text-start bg-[#0F0F0F]/60 hover:bg-[#0F0F0F] rounded-md`}>
 
-            {item.subMenu ? (
-              <>
+      {/* Hamburger Toggle */}
+      <button
+        onClick={toggleMenu}
+        className="text-white relative z-[1001] p-2 hover:bg-white/10 rounded-full transition-colors"
+        aria-label="Toggle Menu"
+      >
+        {isOpen ? <X size={28} /> : <Menu size={28} />}
+      </button>
+
+      {/* Full Screen Overlay Menu */}
+      <div
+        className={`fixed inset-0 bg-[#00773A] z-[1000] flex flex-col pt-24 px-6 transition-all duration-500 ease-in-out ${isOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full pointer-events-none"
+          }`}
+      >
+        {/* Background Decoration */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-black/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+
+        {/* Menu Items */}
+        <ul className="flex flex-col gap-2 w-full h-full overflow-y-auto pb-20 relative z-10 no-scrollbar">
+          {menuList.map((item, index) => (
+            <li key={index} className="w-full border-b border-white/10 last:border-0">
+
+              {/* Parent Item */}
+              <div
+                className="py-4 flex justify-between items-center text-white font-bold text-lg tracking-wider cursor-pointer group"
+                onClick={() => (item.subMenu ? toggleSubMenu(index) : setIsOpen(false))}
+              >
+                {item.subMenu ? (
+                  <span className="flex-1 flex justify-between items-center" onClick={(e) => { e.stopPropagation(); toggleSubMenu(index); }}>
+                    {item.name}
+                    <ChevronDown
+                      size={20}
+                      className={`transition-transform duration-300 ${activeSubMenu === index ? "rotate-180" : ""}`}
+                    />
+                  </span>
+                ) : (
+                  <Link href={item.href} onClick={() => setIsOpen(false)} className="block w-full">
+                    {item.name}
+                  </Link>
+                )}
+              </div>
+
+              {/* Sub Menu */}
+              {item.subMenu && (
                 <div
-                  onClick={() => toggleSubMenu(index)}
-                  className="cursor-pointer w-full flex justify-between items-center text-white p-2 text-[15px]"
+                  className={`overflow-hidden transition-all duration-300 ease-in-out bg-black/10 rounded-lg ${activeSubMenu === index ? "max-h-[500px] mb-4" : "max-h-0"
+                    }`}
                 >
-                  {item.name}
-                  <span className={`transform transition-transform duration-300 ${activeSubMenu === index ? "rotate-180" : ""}`}>▼</span>
-                </div>
-
-                <div className={`overflow-hidden transition-all duration-300 ease-in-out ${activeSubMenu === index ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}>
-                  <ul className="bg-[#000000]/40 rounded-b-md pb-2">
-                    {item.subMenu.map((subItem, subIndex) => (
+                  <ul className="p-2 space-y-1">
+                    {item.subMenu.map((sub, subIndex) => (
                       <li key={subIndex}>
                         <Link
-                          href={subItem.href}
-                          onClick={handleOpen}
-                          className="block text-gray-200 hover:text-[#FFA600] p-2 pl-6 text-[14px]"
+                          href={sub.href}
+                          onClick={() => setIsOpen(false)}
+                          className="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/10 rounded-md text-sm font-medium transition-colors"
                         >
-                          {subItem.name}
+                          {sub.name}
                         </Link>
                       </li>
                     ))}
                   </ul>
                 </div>
-              </>
-            ) : (
-              <Link
-                onClick={handleOpen}
-                href={item.href}
-                className="cursor-pointer w-full block text-white p-2 text-[15px]">
-                {item.name}
-              </Link>
-            )}
+              )}
+            </li>
+          ))}
+
+          {/* Login Button Mobile */}
+          <li className="mt-8">
+            <Link
+              href="/login"
+              onClick={() => setIsOpen(false)}
+              className="block w-full text-center bg-white text-[#00773A] font-bold py-3 rounded-full shadow-lg hover:bg-gray-100 transition-transform active:scale-95"
+            >
+              LOGIN AREA
+            </Link>
           </li>
-        ))}
-      </ul>
-      <ul className="flex items-center gap-4 ">
-        <li>
-          <Button
-            className={`block`}
-            onClick={handleOpen}>
-            <Image
-              src={isOpen ? "/svg/icon/toggle-off.svg" : "/svg/icon/toggle-on.svg"}
-              className="w-[auto] h-5 "
-              width={200}
-              height={200}
-              alt="logo"
-            />
-          </Button>
-        </li>
-      </ul>
+        </ul>
+
+      </div>
     </nav>
   );
 }
