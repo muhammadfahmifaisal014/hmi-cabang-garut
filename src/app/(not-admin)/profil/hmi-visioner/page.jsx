@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { Target, TrendingUp } from "lucide-react";
 
 export const metadata = {
   title: "HMI Visioner",
@@ -127,8 +128,8 @@ export default function HmiVisionerPage() {
             {/* VISI */}
             <div className="bg-[#0b6b3e]/30 p-8 rounded-2xl border border-white/10 backdrop-blur-sm hover:bg-[#0b6b3e]/50 transition duration-300">
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 bg-orange-500 rounded flex items-center justify-center font-bold text-2xl flex-shrink-0">
-                  <Image src="/svg/icon/target.svg" width={24} height={24} alt="Visi" className="invert" />
+                <div className="w-12 h-12 bg-orange-500 rounded flex items-center justify-center font-bold text-2xl flex-shrink-0 text-white">
+                  <Target size={24} />
                 </div>
                 <h3 className="text-3xl font-bold">VISI</h3>
               </div>
@@ -140,8 +141,8 @@ export default function HmiVisionerPage() {
             {/* MISI */}
             <div className="bg-[#0b6b3e]/30 p-8 rounded-2xl border border-white/10 backdrop-blur-sm hover:bg-[#0b6b3e]/50 transition duration-300">
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 bg-orange-500 rounded flex items-center justify-center font-bold text-2xl flex-shrink-0">
-                  <Image src="/svg/icon/chart.svg" width={24} height={24} alt="Misi" className="invert" />
+                <div className="w-12 h-12 bg-orange-500 rounded flex items-center justify-center font-bold text-2xl flex-shrink-0 text-white">
+                  <TrendingUp size={24} />
                 </div>
                 <h3 className="text-3xl font-bold">MISI</h3>
               </div>

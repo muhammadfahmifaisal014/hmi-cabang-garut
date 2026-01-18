@@ -119,47 +119,63 @@ export default function Home() {
           {/* Bagian Bawah */}
           <section className="w-full flex flex-col md:flex-row justify-center items-center py-10 px-4 max-w-7xl gap-6">
             {/* Kiri */}
-            <div className="relative bg-white rounded-2xl overflow-hidden shadow-md border-2 border-green-500 w-full md:w-2/3">
-              {/* Gambar Background */}
-              <div className="relative">
+            <div className="relative bg-white rounded-2xl overflow-hidden shadow-md border-2 border-green-500 w-full md:w-2/3 flex flex-col md:block">
+              {/* Gambar Background (Visible only on MD+) */}
+              <div className="hidden md:block relative h-60 w-full">
                 <Image
                   src="/img/BgBeranda.png"
                   alt="HMI Visioner"
-                  width={800}
-                  height={400}
-                  className="w-full h-60 object-cover"
+                  fill
+                  className="object-cover"
                 />
+                <div className="absolute inset-0 bg-green-800/80"></div>
 
-                {/* Overlay hijau transparan */}
-                <div className="absolute inset-0 bg-green-800/50"></div>
-
-                {/* Konten di atas overlay */}
-                <div className="absolute inset-0 flex items-center justify-between px-6 py-4">
-                  {/* Kiri - Teks */}
+                {/* Content Overlay Desktop */}
+                <div className="absolute inset-0 flex items-center justify-between px-8 py-4">
                   <div className="text-white max-w-[65%]">
-                    <h3 className="font-bold text-lg mb-1">#HMIVISIONER</h3>
-                    <p className="text-sm leading-snug">
+                    <h3 className="font-bold text-2xl mb-2">#HMIVISIONER</h3>
+                    <p className="text-sm leading-relaxed mb-4 text-gray-100">
                       Gagasan HMI Cabang Garut Periode 2025–2026 dalam rangka
                       memperjuangkan keadilan sosial dan membangun kemandirian kader di
                       Wilayah Kabupaten Garut.
                     </p>
                     <Link
                       href="/profil/hmi-visioner"
-                      className="inline-block mt-3 bg-orange-500 hover:bg-orange-600 text-white text-xs px-3 py-1.5 rounded-md">
-                      DISCOVER MORE ▾
+                      className="inline-flex items-center gap-1 bg-orange-500 hover:bg-orange-600 text-white text-xs font-bold px-4 py-2 rounded-lg transition-transform hover:scale-105">
+                      DISCOVER MORE <span>▼</span>
                     </Link>
                   </div>
-
-                  {/* Kanan - Logo WN besar */}
                   <div className="relative flex-shrink-0">
                     <Image
                       src="/img/HMIVISIONER.png"
                       alt="Logo HMIVISIONER"
-                      width={180}
-                      height={180}
-                      className="object-contain drop-shadow-lg"
+                      width={160}
+                      height={160}
+                      className="object-contain drop-shadow-xl"
                     />
                   </div>
+                </div>
+              </div>
+
+              {/* Mobile Layout (Stacked & Clean) */}
+              <div className="md:hidden bg-green-800 p-6 flex flex-col items-center text-center relative overflow-hidden">
+                {/* Background Pattern */}
+                <div className="absolute top-0 right-0 opacity-10 transform translate-x-1/2 -translate-y-1/2">
+                  <Image src="/img/HMIVISIONER.png" width={200} height={200} alt="bg" />
+                </div>
+
+                <div className="relative z-10">
+                  <h3 className="font-black text-2xl text-white mb-2">#HMIVISIONER</h3>
+                  <p className="text-gray-100 text-sm leading-relaxed mb-6">
+                    Gagasan HMI Cabang Garut Periode 2025–2026 dalam rangka
+                    memperjuangkan keadilan sosial.
+                  </p>
+                  <Link
+                    href="/profil/hmi-visioner"
+                    className="inline-block w-full bg-orange-500 text-white font-bold py-3 rounded-lg shadow-md active:scale-95 transition-transform"
+                  >
+                    LIHAT SELENGKAPNYA
+                  </Link>
                 </div>
               </div>
             </div>
