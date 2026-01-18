@@ -1,43 +1,18 @@
 import React from "react";
+import { supabase } from "@/lib/supabaseClient";
 
 export const metadata = {
   title: "Daftar Ketua Umum",
   description: "Daftar Ketua Umum HMI Cabang Garut Dari Masa Ke Masa",
 };
 
-export default function DaftarKetuaUmumPage() {
-  const ketuaList = [
-    {
-      id: 1,
-      name: "Tahun 19xx - 19xx : Nama Ketua Umum",
-      desc: "Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    },
-    {
-      id: 2,
-      name: "Tahun 19xx - 19xx : Nama Ketua Umum",
-      desc: "Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    },
-    {
-      id: 3,
-      name: "Tahun 19xx - 19xx : Nama Ketua Umum",
-      desc: "Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    },
-    {
-      id: 4,
-      name: "Tahun 19xx - 19xx : Nama Ketua Umum",
-      desc: "Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    },
-    {
-      id: 5,
-      name: "Tahun 19xx - 19xx : Nama Ketua Umum",
-      desc: "Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    },
-    {
-      id: 6,
-      name: "Tahun 19xx - 19xx : Nama Ketua Umum",
-      desc: "Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-    },
-  ];
+export default async function DaftarKetuaUmumPage() {
+  const { data: chairmen } = await supabase
+    .from("chairmen")
+    .select("*")
+    .order("period", { ascending: true });
+
+  const list = chairmen || [];
 
   return (
     <div className="w-full bg-[#0fa156] text-white font-sans pb-20">
@@ -73,18 +48,27 @@ export default function DaftarKetuaUmumPage() {
           </div>
 
           {/* List */}
-          <ul className="space-y-6 text-white text-sm md:text-base leading-relaxed opacity-90">
-            {ketuaList.map((item) => (
-              <li key={item.id} className="flex gap-2">
-                <span className="font-bold min-w-[20px]">{item.id}.</span>
-                <div className="font-bold">
-                  {item.desc}
-                  {/* Note: In the design the text seems repetitive dummy text. 
-                                 I've put the dummy text here. You can replace with real data later. */}
-                </div>
-              </li>
-            ))}
-          </ul>
+          {list.length === 0 ? (
+            <p className="text-white/80 italic">Belum ada data ketua umum.</p>
+          ) : (
+            <ul className="space-y-6 text-white text-sm md:text-base leading-relaxed opacity-90">
+              {list.map((item, index) => (
+                <li key={item.id} className="flex gap-4">
+                  <span className="font-bold min-w-[24px] text-lg">{index + 1}.</span>
+                  <div className="flex flex-col">
+                    <span className="font-bold text-lg">
+                      Tahun {item.period} : {item.name}
+                    </span>
+                    {item.description && (
+                      <span className="mt-1 block text-white/80 whitespace-pre-wrap">
+                        {item.description}
+                      </span>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
 
         </div>
       </div>

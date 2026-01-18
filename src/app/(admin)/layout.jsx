@@ -40,10 +40,19 @@ export default function AdminRootLayout({ children }) {
                 <Link href="/admin/trainings" className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-green-50 text-gray-600 font-medium hover:text-green-700 transition group">
                   <span className="group-hover:translate-x-1 transition-transform">🎓</span> Training
                 </Link>
+                <Link href="/admin/gallery" className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-green-50 text-gray-600 font-medium hover:text-green-700 transition group">
+                  <span className="group-hover:translate-x-1 transition-transform">🖼️</span> Galeri
+                </Link>
 
                 <p className="px-4 text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 mt-6">Internal</p>
                 <Link href="/admin/members" className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-green-50 text-gray-600 font-medium hover:text-green-700 transition group">
                   <span className="group-hover:translate-x-1 transition-transform">👥</span> Pengurus
+                </Link>
+                <Link href="/admin/lpp" className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-green-50 text-gray-600 font-medium hover:text-green-700 transition group">
+                  <span className="group-hover:translate-x-1 transition-transform">🏢</span> LPP
+                </Link>
+                <Link href="/admin/chairmen" className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-green-50 text-gray-600 font-medium hover:text-green-700 transition group">
+                  <span className="group-hover:translate-x-1 transition-transform">👑</span> Ketua Umum
                 </Link>
               </nav>
 

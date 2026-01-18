@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { Globe, Instagram, Mail, Youtube, MessageCircle } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -76,23 +77,23 @@ export default function Footer() {
           <h3 className="font-bold text-lg mb-4 text-[#FFA600]">Media Sosial</h3>
           <ul className="space-y-3 text-sm">
             <li className="flex items-center gap-2">
-              <span>🌐</span>
+              <Globe size={18} className="text-white" />
               <a href="https://hmicabanggarut.or.id" target="_blank" className="hover:text-orange-300 transition-colors">hmicabanggarut.or.id</a>
             </li>
             <li className="flex items-center gap-2">
-              <span>📷</span>
+              <Instagram size={18} className="text-white" />
               <a href="https://instagram.com/hmi.cabanggarut" target="_blank" className="hover:text-orange-300 transition-colors">@hmi.cabanggarut</a>
             </li>
             <li className="flex items-center gap-2">
-              <span>📧</span>
+              <Mail size={18} className="text-white" />
               <a href="mailto:hmicabanggarut2023@gmail.com" className="hover:text-orange-300 transition-colors">hmicabanggarut2023@gmail.com</a>
             </li>
             <li className="flex items-center gap-2">
-              <span>▶️</span>
+              <Youtube size={18} className="text-white" />
               <a href="#" className="hover:text-orange-300 transition-colors">HMI Cabang Garut</a>
             </li>
             <li className="flex items-center gap-2">
-              <span>💬</span>
+              <MessageCircle size={18} className="text-white" />
               <a href="#" className="hover:text-orange-300 transition-colors">Saluran WA Official</a>
             </li>
           </ul>

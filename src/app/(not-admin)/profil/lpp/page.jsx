@@ -1,6 +1,10 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { supabase } from "@/lib/supabaseClient";
+import { Instagram } from "lucide-react";
+
+export const revalidate = 0; // Disable static caching for this page
 
 export const metadata = {
   title: "Lembaga Pengembangan Profesi",
@@ -12,46 +16,48 @@ const MemberCard = ({ name, position, img, instagram }) => {
   const igUrl = `https://www.instagram.com/${username}`;
 
   return (
-    <Link href={igUrl} target="_blank" rel="noopener noreferrer">
-      <div className="w-48 bg-[#FFA600] rounded-[2rem] p-3 flex flex-col items-center shadow-lg transition-transform transform hover:-translate-y-2 border-2 border-white/40 cursor-pointer group">
-        {/* Image Container */}
-        <div className="w-full aspect-[4/5] bg-white rounded-2xl overflow-hidden relative shadow-inner">
-          {img ? (
-            <Image
-              src={img}
-              alt={name}
-              fill
-              className="object-cover object-top"
-            />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center bg-gray-200 text-gray-400">
-              <span className="text-4xl">?</span>
-            </div>
-          )}
-        </div>
-
-        {/* Name Pill */}
-        <div className="bg-white px-3 py-1.5 rounded-full mt-[-16px] z-10 shadow-sm border border-gray-100 max-w-[95%]">
-          <h3 className="text-[#004E26] text-[10px] font-black uppercase text-center truncate leading-tight">
-            {name}
-          </h3>
-        </div>
-
-        {/* Position Pill */}
-        <div className="mt-2 border border-white bg-[#FFA600] px-4 py-1 rounded-full shadow-sm">
-          <p className="text-white text-[9px] font-bold uppercase tracking-wider whitespace-nowrap">
-            {position}
-          </p>
-        </div>
-
-        {/* Instagram Section */}
-        <div className="mt-2 flex items-center gap-1.5 bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm group-hover:bg-white/30 transition-colors">
-          <Image src="/img/icon/instagram_gradient.png" width={14} height={14} alt="IG" />
-          {/* <span className="text-white text-[9px] font-medium tracking-wide">@{username}</span> */}
-          {/* Note: In the LPP design image, I don't see the username explicitly, but kept the icon based on previously established style. Can comment out username if needed to save space.*/}
-        </div>
+    <div className="w-48 bg-[#FFA600] rounded-[2rem] p-3 flex flex-col items-center shadow-lg transition-transform transform hover:-translate-y-2 border-2 border-white/40 group">
+      {/* Image Container */}
+      <div className="w-full aspect-[4/5] bg-white rounded-2xl overflow-hidden relative shadow-inner">
+        {img ? (
+          <Image
+            src={img}
+            alt={name}
+            fill
+            className="object-cover object-top"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center bg-gray-200 text-gray-400">
+            <span className="text-4xl">?</span>
+          </div>
+        )}
       </div>
-    </Link>
+
+      {/* Name Pill */}
+      <div className="bg-white px-3 py-1.5 rounded-full mt-[-16px] z-10 shadow-sm border border-gray-100 max-w-[95%]">
+        <h3 className="text-[#004E26] text-[10px] font-black uppercase text-center truncate leading-tight">
+          {name}
+        </h3>
+      </div>
+
+      {/* Position Pill */}
+      <div className="mt-2 border border-white bg-[#FFA600] px-4 py-1 rounded-full shadow-sm">
+        <p className="text-white text-[9px] font-bold uppercase tracking-wider whitespace-nowrap">
+          {position}
+        </p>
+      </div>
+
+      {/* Instagram Section */}
+      <Link
+        href={igUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-2 flex items-center gap-1.5 bg-white/20 px-3 py-1 rounded-full backdrop-blur-sm hover:bg-white/30 transition-colors cursor-pointer"
+      >
+        <Instagram size={14} className="text-white" />
+        {/* <span className="text-white text-[9px] font-medium tracking-wide">@{username}</span> */}
+      </Link>
+    </div>
   );
 };
 
@@ -75,44 +81,30 @@ const LPPSection = ({ title, description, chairman }) => (
   </div>
 );
 
-export default function LPPPage() {
-  const lppData = [
-    {
-      title: "Lembaga Dakwah Mahasiswa Islam",
-      description: "Lembaga Dakwah Mahasiswa Islam (LDMI) adalah badan khusus HMI yang bertugas membina dan mengembangkan potensi dakwah mahasiswa Islam. LDMI berperan aktif dalam syiar Islam, kajian keagamaan, serta membentengi akidah umat dari berbagai tantangan zaman. Fokus utamanya adalah mencetak kader da'i yang intelektual dan berintegritas.",
-      chairman: { name: "Yusup Saepul Hayat", position: "Direktur Utama", img: "/img/hmivisioner/logo_visioner_green.png", instagram: "yusupsaepul" }
-    },
-    {
-      title: "Lembaga Teknik Mahasiswa Islam",
-      description: "Lembaga Teknik Mahasiswa Islam (LTMI) merupakan wadah pengembangan profesi bagi mahasiswa teknik anggota HMI. Berfokus pada pengembangan skill keteknikan, inovasi teknologi tepat guna, dan pengabdian masyarakat berbasis rekayasa. LTMI berkomitmen untuk memajukan teknologi demi kemaslahatan umat dan bangsa.",
-      chairman: { name: "Yusup Saepul Hayat", position: "Direktur Utama", img: "/img/hmivisioner/logo_visioner_green.png", instagram: "yusupsaepul" }
-    },
-    {
-      title: "Lembaga Bantuan Hukum Mahasiswa Islam",
-      description: "Lembaga Bantuan Hukum Mahasiswa Islam (LBHMI) adalah lembaga kekaryaan HMI yang bergerak di bidang advokasi hukum dan HAM. Memberikan penyuluhan hukum, pendampingan kasus, dan kajian kritis terhadap isu-isu hukum di Indonesia. LBHMI berdiri di garda terdepan dalam menegakkan keadilan bagi kaum tertindas.",
-      chairman: { name: "Yusup Saepul Hayat", position: "Direktur Utama", img: "/img/hmivisioner/logo_visioner_green.png", instagram: "yusupsaepul" }
-    },
-    {
-      title: "Lembaga Pers Mahasiswa Islam",
-      description: "Lembaga Pers Mahasiswa Islam (LAPMI) adalah badan khusus yang mewadahi minat dan bakat jurnalisme kader HMI. LAPMI berfungsi sebagai media informasi, edukasi, dan kontrol sosial. Melalui tulisan dan liputan yang objektif, LAPMI menyuarakan kebenaran dan menjadi corong pergerakan mahasiswa Islam.",
-      chairman: { name: "Yusup Saepul Hayat", position: "Direktur Utama", img: "/img/hmivisioner/logo_visioner_green.png", instagram: "yusupsaepul" }
-    },
-    {
-      title: "Lembaga Ekonomi Mahasiswa Islam",
-      description: "Lembaga Ekonomi Mahasiswa Islam (LEMI) berfokus pada pengembangan jiwa kewirausahaan dan pemikiran ekonomi kader HMI. LEMI bertujuan mencetak kader entrepreneur muslim yang tangguh serta berkontribusi pada kemandirian ekonomi umat. Kegiatannya meliputi pelatihan bisnis, kajian ekonomi, dan inkubasi usaha.",
-      chairman: { name: "Yusup Saepul Hayat", position: "Direktur Utama", img: "/img/hmivisioner/logo_visioner_green.png", instagram: "yusupsaepul" }
-    },
-    {
-      title: "Lembaga Seni Budaya Mahasiswa Islam",
-      description: "Lembaga Seni Budaya Mahasiswa Islam (LSBMI) adalah wadah ekspresi dan apresiasi seni budaya yang bernafaskan Islam. LSBMI mengembangkan potensi kader di bidang sastra, musik, teater, dan seni rupa. Tujuannya adalah melestarikan budaya Islam dan Nusantara serta menjadikan seni sebagai media dakwah yang santun.",
-      chairman: { name: "Yusup Saepul Hayat", position: "Direktur Utama", img: "/img/hmivisioner/logo_visioner_green.png", instagram: "yusupsaepul" }
-    },
-    {
-      title: "Lembaga Kesehatan Mahasiswa Islam",
-      description: "Lembaga Kesehatan Mahasiswa Islam (LKMI) berfokus pada pengabdian masyarakat di bidang kesehatan. Mewadahi mahasiswa kedokteran dan kesehatan anggota HMI untuk berkontribusi nyata melalui pengobatan gratis, penyuluhan kesehatan, dan tanggap bencana. LKMI mengamalkan nilai kemanusiaan sebagai wujud Islam Rahmatan Lil 'Alamin.",
-      chairman: { name: "Yusup Saepul Hayat", position: "Direktur Utama", img: "/img/hmivisioner/logo_visioner_green.png", instagram: "yusupsaepul" }
-    },
-  ];
+export default async function LPPPage() {
+
+  // Fetch data from Supabase
+  const { data: dbData, error } = await supabase
+    .from("lpp")
+    .select("*")
+    .order("created_at", { ascending: true });
+
+  let lppData = [];
+
+  if (error || !dbData || dbData.length === 0) {
+    if (error) console.error("Error fetching LPP data:", error);
+  } else {
+    lppData = dbData.map(item => ({
+      title: item.title,
+      description: item.description,
+      chairman: {
+        name: item.chairman_name,
+        position: item.chairman_position,
+        img: item.chairman_image,
+        instagram: item.chairman_instagram
+      }
+    }));
+  }
 
   return (
     <div className="w-full bg-[#0fa156] text-white font-sans pb-20">
@@ -135,9 +127,16 @@ export default function LPPPage() {
 
       {/* CONTENT LIST */}
       <div className="max-w-6xl mx-auto px-4 mt-8 space-y-8">
-        {lppData.map((item, index) => (
-          <LPPSection key={index} {...item} />
-        ))}
+        {lppData.length > 0 ? (
+          lppData.map((item, index) => (
+            <LPPSection key={index} {...item} />
+          ))
+        ) : (
+          <div className="bg-white/10 rounded-xl p-8 text-center backdrop-blur-sm">
+            <p className="text-xl font-medium">Belum ada data lembaga yang ditampilkan.</p>
+            <p className="text-sm opacity-70 mt-2">Silakan tambahkan data melalui halaman Admin.</p>
+          </div>
+        )}
       </div>
 
       {/* FOOTER MESSAGE */}
