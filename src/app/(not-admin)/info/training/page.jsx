@@ -6,6 +6,8 @@ export const metadata = {
   description: "Informasi Perkaderan dan Training HMI Cabang Garut",
 };
 
+export const dynamic = "force-dynamic";
+
 import Link from "next/link";
 
 const TrainingCard = ({ date, title, desc, img, id }) => (

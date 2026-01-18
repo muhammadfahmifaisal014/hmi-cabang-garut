@@ -9,6 +9,8 @@ export const metadata = {
   description: "Agenda dan Event kegiatan HMI Cabang Garut",
 };
 
+export const dynamic = "force-dynamic";
+
 const EventCard = ({ date, title, desc, img, slug }) => (
   <Link href={`/info/event/${slug}`} className="relative group w-full aspect-[4/3] md:aspect-[3/2] lg:aspect-[4/3] rounded-3xl overflow-hidden shadow-xl cursor-pointer border border-white/20 block">
     {/* Background Image */}
