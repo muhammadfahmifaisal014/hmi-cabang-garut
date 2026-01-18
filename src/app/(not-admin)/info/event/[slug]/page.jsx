@@ -4,18 +4,15 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 
-export async function generateStaticParams() {
-  const { data: events } = await supabase.from("events").select("slug");
-  return (events || []).map((event) => ({
-    slug: event.slug,
-  }));
-}
+export const dynamic = "force-dynamic";
 
 export default async function EventDetailPage({ params }) {
+  const { slug } = await params;
+
   const { data: event } = await supabase
     .from("events")
     .select("*")
-    .eq("slug", params.slug)
+    .eq("slug", slug)
     .single();
 
   if (!event) {
