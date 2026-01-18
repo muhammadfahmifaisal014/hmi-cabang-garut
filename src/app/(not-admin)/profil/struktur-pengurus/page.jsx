@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Instagram } from "lucide-react";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Struktur Pengurus",
   description: "Struktur Pengurus HMI Cabang Garut Periode 2025-2026",

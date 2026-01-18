@@ -4,18 +4,16 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 
-export async function generateStaticParams() {
-  const { data: news } = await supabase.from("news").select("slug");
-  return (news || []).map((item) => ({
-    slug: item.slug,
-  }));
-}
+export const dynamic = "force-dynamic"; // Ensures dynamic routing works for new posts
 
 export default async function BeritaDetailPage({ params }) {
+  // Await params object before accessing properties
+  const { slug } = await params;
+
   const { data: item } = await supabase
     .from("news")
     .select("*")
-    .eq("slug", params.slug)
+    .eq("slug", slug)
     .single();
 
   if (!item) {

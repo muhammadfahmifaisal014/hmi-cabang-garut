@@ -1,6 +1,8 @@
 import React from "react";
 import { supabase } from "@/lib/supabaseClient";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Daftar Ketua Umum",
   description: "Daftar Ketua Umum HMI Cabang Garut Dari Masa Ke Masa",

@@ -2,6 +2,8 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic"; // Ensures data is always fresh
+
 export const metadata = {
   title: "Berita HMI Cabang Garut",
   description: "Berita terkini seputar Himpunan Mahasiswa Islam Cabang Garut",
