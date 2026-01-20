@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# HMI Cabang Garut
 
-## Getting Started
+![HMI Cabang Garut](public/img/logohmiputih.png)
 
-First, run the development server:
+**Website Resmi Himpunan Mahasiswa Islam Cabang Garut**
+
+Platform digital modern yang dirancang untuk menjadi pusat informasi, administrasi, dan publikasi kegiatan HMI Cabang Garut. Dibangun menggunakan teknologi web terkini untuk performa, estetika, dan kemudahan penggunaan.
+
+---
+
+## 🚀 Fitur Utama
+
+### 🌍 Halaman Publik
+- **Beranda Interaktif**: Menampilkan highlight berita terkini, agenda kegiatan, dan profil singkat organisasi.
+- **Profil Organisasi**: Informasi lengkap mengenai sejarah, visi misi, struktur kepengurusan, dan lembaga kekaryaan.
+- **Pusat Informasi**: Terintegrasi dengan fitur **Berita**, **Event**, dan **Training** (LK 1, LK 2, dll).
+- **Galeri Dokumentasi**: Dokumentasi visual kegiatan dengan tampilan modern (Lightbox).
+- **Desain Responsif**: Tampilan yang optimal di berbagai perangkat (Desktop, Tablet, & Mobile).
+
+### 🛠️ Admin Dashboard (CMS)
+Sistem manajemen konten terpadu untuk pengurus:
+- **Manajemen Berita**: Buat, edit, dan hapus artikel berita.
+- **Manajemen Event & Training**: Kelola jadwal dan informasi kegiatan perkaderan.
+- **Manajemen Pengurus**: Database struktur kepengurusan yang dinamis.
+- **Manajemen LPP**: Kelola data Lembaga Pengembangan Profesi.
+- **Autentikasi Aman**: Login area khusus administrator.
+
+---
+
+## 🛠️ Teknologi yang Digunakan
+
+Proyek ini dibangun menggunakan **Modern Tech Stack** untuk menjamin kecepatan dan skalabilitas:
+
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
+- **Library UI**: [React 19](https://react.dev/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Database & Auth**: [Supabase](https://supabase.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Deployment**: [Netlify](https://www.netlify.com/)
+
+---
+
+## 📂 Struktur Proyek
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+hmicabanggarut/
+├── docs/               # Dokumentasi tambahan (Panduan Supabase)
+├── public/             # Aset statis (Gambar, Icon)
+├── src/
+│   ├── app/            # App Router (Pages & Layouts)
+│   │   ├── (admin)/    # Route Group untuk Admin Dashboard
+│   │   ├── (public)/   # Route Group untuk Halaman Publik
+│   │   └── api/        # API Routes (jika ada)
+│   ├── components/     # Komponen UI Reusable
+│   │   ├── layout/     # Navbar, Footer, Sidebar
+│   │   └── ui/         # Button, Card, Input, dll
+│   └── lib/            # Utilitas & Konfigurasi (Supabase Client)
+└── ...
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🚀 Cara Menjalankan (Local Development)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Ikuti langkah-langkah berikut untuk menjalankan proyek di komputer lokal Anda:
 
-## Learn More
+### 1. Prasyarat
+Pastikan Anda telah menginstal:
+- [Node.js](https://nodejs.org/) (versi terbaru disarankan)
+- Git
 
-To learn more about Next.js, take a look at the following resources:
+### 2. Clone Repository
+```bash
+git clone https://github.com/MuhammadFahmiFaisal/hmicabanggarut.git
+cd hmicabanggarut
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 3. Instal Dependencies
+```bash
+npm install
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 4. Konfigurasi Environment Variable
+Buat file `.env.local` di direktori root dan tambahkan konfigurasi Supabase Anda:
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
 
-## Deploy on Vercel
+### 5. Jalankan Server Development
+```bash
+npm run dev
+```
+Buka [http://localhost:3000](http://localhost:3000) di browser Anda.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🤝 Kontribusi
+
+Kontribusi sangat diterima! Jika Anda ingin memperbaiki bug atau menambahkan fitur baru:
+
+1.  Fork repository ini.
+2.  Buat branch fitur baru (`git checkout -b fitur-keren`).
+3.  Commit perubahan Anda (`git commit -m 'Menambahkan fitur keren'`).
+4.  Push ke branch tersebut (`git push origin fitur-keren`).
+5.  Buat Pull Request.
+
+---
+
+## 📜 Lisensi
+
+Hak Cipta © 2024-2025 **HMI Cabang Garut**.
+
+Dibuat dengan 💚 untuk Yakusa.
