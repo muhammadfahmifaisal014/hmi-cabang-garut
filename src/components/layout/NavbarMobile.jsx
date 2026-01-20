@@ -137,15 +137,7 @@ export default function NavbarMobile({ className }) {
           ))}
 
           {/* Login Button Mobile */}
-          <li className="mt-8">
-            <Link
-              href="/login"
-              onClick={() => setIsOpen(false)}
-              className="block w-full text-center bg-white text-[#00773A] font-bold py-3 rounded-full shadow-lg hover:bg-gray-100 transition-transform active:scale-95"
-            >
-              LOGIN AREA
-            </Link>
-          </li>
+
         </ul>
 
       </div>
