@@ -9,6 +9,10 @@
     <strong>Platform Digital Terintegrasi untuk Perkaderan dan Informasi</strong>
   </p>
 
+  <h3>
+    <a href="https://hmicabanggarut.or.id">🌐 Kunjungi Website Resmi: hmicabanggarut.or.id</a>
+  </h3>
+
   <p>
     <a href="https://nextjs.org">
       <img src="https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js" alt="Next.js" />
