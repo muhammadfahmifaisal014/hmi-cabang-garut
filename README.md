@@ -1,93 +1,118 @@
-# HMI Cabang Garut
+# HMI Cabang Garut - Official Web Platform
 
-![HMI Cabang Garut](public/img/logohmiputih.png)
+<div align="center">
+  <img src="public/img/logohmiputih.png" alt="Logo HMI Cabang Garut" width="150" />
+  
+  <h1>Himpunan Mahasiswa Islam Cabang Garut</h1>
+  
+  <p>
+    <strong>Platform Digital Terintegrasi untuk Perkaderan dan Informasi</strong>
+  </p>
 
-**Website Resmi Himpunan Mahasiswa Islam Cabang Garut**
-
-Platform digital modern yang dirancang untuk menjadi pusat informasi, administrasi, dan publikasi kegiatan HMI Cabang Garut. Dibangun menggunakan teknologi web terkini untuk performa, estetika, dan kemudahan penggunaan.
+  <p>
+    <a href="https://nextjs.org">
+      <img src="https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js" alt="Next.js" />
+    </a>
+    <a href="https://react.dev">
+      <img src="https://img.shields.io/badge/React-19-blue?style=flat-square&logo=react" alt="React" />
+    </a>
+    <a href="https://tailwindcss.com">
+      <img src="https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?style=flat-square&logo=tailwind-css" alt="Tailwind CSS" />
+    </a>
+    <a href="https://supabase.com">
+      <img src="https://img.shields.io/badge/Supabase-Database-3ECF8E?style=flat-square&logo=supabase" alt="Supabase" />
+    </a>
+  </p>
+</div>
 
 ---
 
-## 🚀 Fitur Utama
+## 📖 Tentang Proyek
 
-### 🌍 Halaman Publik
-- **Beranda Interaktif**: Menampilkan highlight berita terkini, agenda kegiatan, dan profil singkat organisasi.
-- **Profil Organisasi**: Informasi lengkap mengenai sejarah, visi misi, struktur kepengurusan, dan lembaga kekaryaan.
-- **Pusat Informasi**: Terintegrasi dengan fitur **Berita**, **Event**, dan **Training** (LK 1, LK 2, dll).
-- **Galeri Dokumentasi**: Dokumentasi visual kegiatan dengan tampilan modern (Lightbox).
-- **Desain Responsif**: Tampilan yang optimal di berbagai perangkat (Desktop, Tablet, & Mobile).
+Website resmi **HMI Cabang Garut** adalah platform digital modern yang dirancang untuk menjadi pusat informasi, administrasi, dan publikasi kegiatan. Dibangun dengan teknologi web terkini, platform ini bertujuan untuk mempermudah akses informasi bagi kader dan masyarakat umum, serta mengefisienkan manajemen organisasi.
+
+Visi kami adalah mewujudkan digitalisasi organisasi yang **responsif**, **transparan**, dan **profesional**.
+
+---
+
+## ✨ Fitur Utama
+
+### 🌍 Halaman Publik (Kader & Umum)
+*   **Beranda Interaktif**: Highlight berita terkini, agenda kegiatan, dan sekilas info organisasi.
+*   **Profil Organisasi**: Sejarah, Visi Misi, Struktur Pengurus, dan Lembaga Kekaryaan.
+*   **Pusat Informasi**: Terintegrasi dengan modul **Berita**, **Event**, dan **Training** (LK 1, LK 2, SC, dll).
+*   **Galeri Digital**: Dokumentasi kegiatan dengan tampilan lightbox yang elegan.
+*   **Mobile-First Design**: Tampilan yang optimal di smartphone, tablet, maupun desktop.
 
 ### 🛠️ Admin Dashboard (CMS)
-Sistem manajemen konten terpadu untuk pengurus:
-- **Manajemen Berita**: Buat, edit, dan hapus artikel berita.
-- **Manajemen Event & Training**: Kelola jadwal dan informasi kegiatan perkaderan.
-- **Manajemen Pengurus**: Database struktur kepengurusan yang dinamis.
-- **Manajemen LPP**: Kelola data Lembaga Pengembangan Profesi.
-- **Autentikasi Aman**: Login area khusus administrator.
+Sistem manajemen konten terpusat untuk pengurus cabang:
+*   **Manajemen Konten**: Buat, edit, dan publikasikan artikel berita dengan mudah.
+*   **Manajemen Event & Training**: Kelola jadwal, pendaftaran, dan informasi perkaderan.
+*   **Database Pengurus**: Manajemen data struktur kepengurusan yang dinamis.
+*   **Manajemen Anggota**: Integrasi data kader (Database Anggota).
+*   **Keamanan Terjamin**: Sistem autentikasi admin yang aman menggunakan Supabase Auth.
 
 ---
 
-## 🛠️ Teknologi yang Digunakan
+## 🛠️ Teknologi
 
-Proyek ini dibangun menggunakan **Modern Tech Stack** untuk menjamin kecepatan dan skalabilitas:
+Proyek ini dibangun menggunakan **Modern Tech Stack** untuk performa tinggi dan skalabilitas:
 
-- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
-- **Library UI**: [React 19](https://react.dev/)
-- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
-- **Database & Auth**: [Supabase](https://supabase.com/)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **Deployment**: [Netlify](https://www.netlify.com/)
+| Kategori | Teknologi |
+| :--- | :--- |
+| **Framework** | [Next.js 16 (App Router)](https://nextjs.org/) |
+| **Language** | JavaScript / React 19 |
+| **Styling** | [Tailwind CSS v4](https://tailwindcss.com/) |
+| **Database** | [Supabase](https://supabase.com/) (PostgreSQL) |
+| **Icons** | [Lucide React](https://lucide.dev/) |
+| **Deployment** | [Netlify](https://www.netlify.com/) |
 
 ---
 
-## 📂 Struktur Proyek
+## 📂 Struktur Direktori
 
 ```bash
 hmicabanggarut/
-├── docs/               # Dokumentasi tambahan (Panduan Supabase)
-├── public/             # Aset statis (Gambar, Icon)
-├── src/
-│   ├── app/            # App Router (Pages & Layouts)
-│   │   ├── (admin)/    # Route Group untuk Admin Dashboard
-│   │   ├── (public)/   # Route Group untuk Halaman Publik
-│   │   └── api/        # API Routes (jika ada)
-│   ├── components/     # Komponen UI Reusable
-│   │   ├── layout/     # Navbar, Footer, Sidebar
-│   │   └── ui/         # Button, Card, Input, dll
-│   └── lib/            # Utilitas & Konfigurasi (Supabase Client)
+├── 📂 docs/               # Dokumentasi Teknis & SQL Schema
+├── 📂 public/             # Aset Statis (Gambar, Icon, Logo)
+├── 📂 src/
+│   ├── 📂 app/            # Next.js App Router
+│   │   ├── (admin)/       # Halaman khusus Admin (Protected Routes)
+│   │   ├── (public)/      # Halaman Publik
+│   │   └── api/           # API Endpoints
+│   ├── 📂 components/     # Komponen UI Modular
+│   │   ├── layout/        # Navbar, Footer, Sidebar
+│   │   └── ui/            # Reusable UI Elements (Button, Card, Input)
+│   └── 📂 lib/            # Utilitas & Konfigurasi (Supabase Client)
 └── ...
 ```
 
 ---
 
-## 🚀 Cara Menjalankan (Local Development)
+## 🚀 Memulai Pengembangan (Local Development)
 
-Ikuti langkah-langkah berikut untuk menjalankan proyek di komputer lokal Anda:
+Ikuti langkah ini untuk menjalankan proyek di komputer lokal Anda:
 
-### 1. Prasyarat
-Pastikan Anda telah menginstal:
-- [Node.js](https://nodejs.org/) (versi terbaru disarankan)
-- Git
-
-### 2. Clone Repository
+### 1. Clone Repository
 ```bash
-git clone https://github.com/MuhammadFahmiFaisal/hmicabanggarut.git
+git clone https://github.com/muhammadfahmifaisal014/hmi-cabang-garut.git
 cd hmicabanggarut
 ```
 
-### 3. Instal Dependencies
+### 2. Instal Dependencies
+Pastikan Node.js sudah terinstal.
 ```bash
 npm install
 ```
 
-### 4. Konfigurasi Environment Variable
-Buat file `.env.local` di direktori root dan tambahkan konfigurasi Supabase Anda:
+### 3. Konfigurasi Environment
+Buat file `.env.local` di root folder dan isi dengan kredensial Supabase Anda:
 ```env
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 ```
 
-### 5. Jalankan Server Development
+### 4. Jalankan Server
 ```bash
 npm run dev
 ```
@@ -97,18 +122,22 @@ Buka [http://localhost:3000](http://localhost:3000) di browser Anda.
 
 ## 🤝 Kontribusi
 
-Kontribusi sangat diterima! Jika Anda ingin memperbaiki bug atau menambahkan fitur baru:
+Kami sangat terbuka untuk kontribusi! Jika Anda ingin membantu mengembangkan platform ini:
 
-1.  Fork repository ini.
-2.  Buat branch fitur baru (`git checkout -b fitur-keren`).
-3.  Commit perubahan Anda (`git commit -m 'Menambahkan fitur keren'`).
-4.  Push ke branch tersebut (`git push origin fitur-keren`).
-5.  Buat Pull Request.
+1.  **Fork** repository ini.
+2.  Buat **Branch** baru untuk fitur Anda (`git checkout -b fitur-baru`).
+3.  **Commit** perubahan Anda (`git commit -m 'Menambahkan fitur baru'`).
+4.  **Push** ke branch Anda (`git push origin fitur-baru`).
+5.  Buat **Pull Request** di GitHub.
 
 ---
 
 ## 📜 Lisensi
 
-Hak Cipta © 2024-2025 **HMI Cabang Garut**.
+Hak Cipta © 2025 **HMI Cabang Garut**. Semua Hak Dilindungi.
 
-Dibuat dengan 💚 untuk Yakusa.
+---
+
+<div align="center">
+  <p>Dibuat dengan 💚 untuk Yakusa (Yakin Usaha Sampai)</p>
+</div>
