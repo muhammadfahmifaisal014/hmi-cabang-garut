@@ -143,5 +143,5 @@ Hak Cipta © 2025 **HMI Cabang Garut**. Semua Hak Dilindungi.
 ---
 
 <div align="center">
-  <p>Dibuat dengan 💚 untuk Yakusa (Yakin Usaha Sampai)</p>
+  <p>Dibuat dengan 💚</p>
 </div>
